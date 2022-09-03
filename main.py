@@ -101,7 +101,7 @@ labels.index = labels["image_id"]
 train_names = os.listdir(f'{DATA_FOLDER}/train')
 train_labels = labels["5_o_Clock_Shadow"][train_names]
 train_labels = list(train_labels)
-
+"""
 train_generator = ImageDataLoaders.from_lists(f"data/train/", train_names, train_labels)
 
 labels.index = labels["image_id"]
@@ -110,7 +110,7 @@ validation_labels = labels["5_o_Clock_Shadow"][validation_names]
 validation_labels = list(validation_labels)
 
 validation_generator = ImageDataLoaders.from_lists (f"{DATA_FOLDER}/validation", [f"{DATA_FOLDER}/validation/{t}" for t in validation_names], validation_labels)
-
+"""
 
 
 #path = untar_data(URLs.PETS)
@@ -126,11 +126,11 @@ train_loader = ImageDataLoaders.from_df(df, path)
 
 
 learn = vision_learner(train_loader, resnet34, metrics=error_rate)
-print(train_generator)
-learn.fine_tune(1)
-learn.predict(validation_generator)
+learn = vision_learner(train_loader, models.resnet18, loss_func=CrossEntropyLossFlat(), ps=0.25)
 
-"""
+learn.fine_tune(1)
+
+
 model.fit(
         train_generator,
         steps_per_epoch=2000,
@@ -138,10 +138,3 @@ model.fit(
         validation_data=validation_generator,
         validation_steps=800)
 
-
-class MultiModel:
-
-    def __init__(self, feature_list):
-        self.feature_list = feature_list
-        
-"""
