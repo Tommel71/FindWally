@@ -130,11 +130,3 @@ learn = vision_learner(train_loader, models.resnet18, loss_func=CrossEntropyLoss
 
 learn.fine_tune(1)
 
-
-model.fit(
-        train_generator,
-        steps_per_epoch=2000,
-        epochs=50,
-        validation_data=validation_generator,
-        validation_steps=800)
-

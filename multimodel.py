@@ -73,6 +73,6 @@ if __name__ == "__main__":
     mm = MultiModel(path_list)
     list_of_imagebatches = [["data/train/000334.jpg", "data/train/000335.jpg"],
                             ["data/validation/000001.jpg", "data/validation/000002.jpg"]]
-    
+
     predictions = mm.predict(list_of_imagebatches)
 
